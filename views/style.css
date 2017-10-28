@@ -1,0 +1,42 @@
+.siam-table {
+  border-collapse: collapse;
+}
+
+.siam-table tr {
+
+}
+
+.siam-table tr th {
+  font-weight: bold;
+  color: #444;
+  border: solid 1px #ddd;
+}
+
+.siam-table tr td {
+  border: solid 1px #ddd;
+}
+
+.siam-table tr .xscol {
+  width: 20px;
+}
+
+.siam-table tr .scol {
+  width: 40px;
+}
+
+.siam-table tr .mcol {
+  width: 60px;
+}
+
+.siam-table tr .lcol {
+  width: 120px;
+}
+
+.siam-table tr .year {
+  text-align: center; 
+}
+
+.siam-table tr .small {
+  font-size: 0.8em;
+  font-weight: normal;
+}
