@@ -4,7 +4,7 @@ class SiamMutuRepo {
   public static function all() {
     global $wpdb;
 
-    $aspeks = $wpdb->get_results('SELECT `id`, `text` FROM `'.$wpdb->prefix.'si_aspek`', ARRAY_A);
+    $aspeks = $wpdb->get_results('SELECT `id`, `text` FROM `'.$wpdb->prefix.'si_aspek` WHERE deleted = 0', ARRAY_A);
 
     foreach ($aspeks as &$aspek) {
       $aspek['list'] = self::getMutus($aspek['id']);
@@ -17,7 +17,7 @@ class SiamMutuRepo {
     global $wpdb;
 
     $mutus = $wpdb->get_results(
-      $wpdb->prepare('SELECT * FROM `'.$wpdb->prefix.'si_mutu` WHERE aspek_id = %d', $aspekId)
+      $wpdb->prepare('SELECT * FROM `'.$wpdb->prefix.'si_mutu` WHERE aspek_id = %d AND deleted = 0', $aspekId)
     , ARRAY_A);
     foreach ($mutus as &$mutu) {
       $mutu['sasaran'] = $wpdb->get_results(

@@ -2,7 +2,7 @@
 
 require_once('pages.php');
 
-function siam_menus_options()
+function siam_menu_utama()
 {
   add_menu_page(
     'Mutu Program Studi',
@@ -11,7 +11,7 @@ function siam_menus_options()
     'mutu-prodi',
     'siam_page_mutu_prodi',
     '',
-    20
+    30
   );
 
   add_submenu_page(
@@ -22,7 +22,7 @@ function siam_menus_options()
     'mutu-prodi-sasaran',
     'siam_page_mutu_prodi_sasaran',
     '',
-    20
+    31
   );
 
   add_submenu_page(
@@ -33,7 +33,48 @@ function siam_menus_options()
     'mutu-prodi-capaian',
     'siam_page_mutu_prodi_capaian',
     '',
-    20
+    32
   );
 }
-add_action('admin_menu', 'siam_menus_options');
+
+function siam_menu_setting() {
+  add_menu_page(
+    'SIAM Pengaturan',
+    'SIAM Pengaturan',
+    'manage_options',
+    'siam-options',
+    null,
+    '',
+    40
+  );
+
+  /* Daftar Aspek */
+  add_submenu_page(
+    'siam-options',
+    'Daftar Aspek',
+    'Daftar Aspek',
+    'manage_options',
+    'siam-options-aspek',
+    'siam_page_daftar_aspek',
+    '',
+    41
+  );
+
+  /* Mutu Prodi */
+  add_submenu_page(
+    'siam-options',
+    'Daftar Mutu Prodi',
+    'Daftar Mutu Prodi',
+    'manage_options',
+    'siam-options-mutu',
+    'siam_page_daftar_mutu',
+    '',
+    41
+  );
+
+  remove_submenu_page('siam-options', 'siam-options');
+}
+
+
+add_action('admin_menu', 'siam_menu_utama');
+add_action('admin_menu', 'siam_menu_setting');

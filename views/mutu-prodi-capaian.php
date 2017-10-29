@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?= SIAM_URL . 'views/style.css' ?>">
 
-<div class="wrap">
+<div class="wrap siam-wrap">
 
   <h2>Form Capaian Mutu Program Studi</h2>
 

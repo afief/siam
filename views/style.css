@@ -1,3 +1,7 @@
+.siam-wrap .button .dashicons {
+  line-height: 1.5em;
+}
+
 .siam-table {
   border-collapse: collapse;
 }
@@ -39,4 +43,14 @@
 .siam-table tr .small {
   font-size: 0.8em;
   font-weight: normal;
+}
+
+.siam-form {
+  max-width: 500px;
+}
+.siam-form h2 {
+  margin-bottom: 0px; 
+}
+.siam-form table {
+  margin-top: 0px;
 }

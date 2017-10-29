@@ -2,16 +2,13 @@
 
 <div class="wrap siam-wrap">
 
-  <h2>Form Sasaran Mutu Program Studi</h2>
+  <h2>Pengaturan Daftar Mutu</h2>
 
   <table class="siam-table widefat fixed striped">
     <thead>
       <tr>
         <th class="xscol">&nbsp;</th>
         <th>Item Sasaran</th>
-        <?php foreach ($tahuns as $tahun) { ?>
-        <th class="scol year"><?= $tahun ?></th>
-        <?php } ?>
         <th>Keterangan</th>
       </tr>
     </thead>
@@ -26,11 +23,6 @@
         <tr>
           <td><?= ($key + 1) ?></td>
           <td><?= $mutu['text']?></td>
-          <?php foreach ($tahuns as $tahun) { ?>
-          <td class="scol year">
-            <input type="text" class="regular-text" style="max-width: 100%" value="<?= $mutu['sasaran'][$tahun] ?>">
-          </td>
-          <?php } ?>
           <td><?= $mutu['keterangan']; ?></td>
         </tr>
         <?php } ?>
