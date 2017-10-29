@@ -2,6 +2,28 @@
   line-height: 1.5em;
 }
 
+.siam-wrap .tab {
+
+}
+
+.siam-wrap .tab ul {
+  display: table;
+}
+
+.siam-wrap .tab ul li {
+  display: inline-block;
+  cursor: pointer;
+  background-color: #fff;
+  padding: 10px 20px;
+}
+.siam-wrap .tab ul li:hover {
+  background-color: #cdebfb;
+} 
+.siam-wrap .tab ul li.active {
+  font-weight: bold;
+  border-bottom: solid 2px #444;
+}
+
 .siam-table {
   border-collapse: collapse;
 }

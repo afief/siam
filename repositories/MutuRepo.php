@@ -86,4 +86,58 @@ class SiamMutuRepo {
     }
     return $result;
   }
+
+  public static function saveSasaran($data) {
+    global $wpdb;
+
+    foreach ($data as $key => $value) {
+      if (substr($key, 0, 4) == 'mutu') {
+        $ar = explode('_', $key);
+        $exists = $wpdb->get_row(
+          $wpdb->prepare('select id from '.$wpdb->prefix.'si_sasaran where tahun = %s and mutu_id = %d', $ar[2], $ar[1])
+        );
+        if ($exists) {
+           $wpdb->update($wpdb->prefix.'si_sasaran', array(
+            'nilai' => $value
+          ), array(
+            'mutu_id' => $ar[1],
+            'tahun' => $ar[2]
+          ));
+        } else {
+          $wpdb->insert($wpdb->prefix.'si_sasaran', array(
+            'mutu_id' => $ar[1],
+            'tahun' => $ar[2],
+            'nilai' => $value
+          ));
+        }
+      }
+    }
+  }
+
+  public static function saveCapaian($data) {
+    global $wpdb;
+
+    foreach ($data as $key => $value) {
+      if (substr($key, 0, 4) == 'mutu') {
+        $ar = explode('_', $key);
+        $exists = $wpdb->get_row(
+          $wpdb->prepare('select id from '.$wpdb->prefix.'si_capaian where tahun = %s and mutu_id = %d', $ar[2], $ar[1])
+        );
+        if ($exists) {
+           $wpdb->update($wpdb->prefix.'si_capaian', array(
+            'nilai' => $value
+          ), array(
+            'mutu_id' => $ar[1],
+            'tahun' => $ar[2]
+          ));
+        } else {
+          $wpdb->insert($wpdb->prefix.'si_capaian', array(
+            'mutu_id' => $ar[1],
+            'tahun' => $ar[2],
+            'nilai' => $value
+          ));
+        }
+      }
+    }
+  }
 }

@@ -10,7 +10,7 @@ function siam_menu_utama()
     'manage_options',
     'mutu-prodi',
     'siam_page_mutu_prodi',
-    '',
+    'dashicons-universal-access-alt',
     30
   );
 
@@ -44,7 +44,7 @@ function siam_menu_setting() {
     'manage_options',
     'siam-options',
     null,
-    '',
+    'dashicons-forms',
     40
   );
 

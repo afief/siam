@@ -9,15 +9,29 @@ function siam_page_mutu_prodi() {
 }
 
 function siam_page_mutu_prodi_sasaran() {
+  $aspeks = AspekRepo::all();
   $tahuns = SiamTahunRepo::all();
-  $mutus = SiamMutuRepo::all();
+
+  if (isset($_POST['sasaran_submit'])) {
+    SiamMutuRepo::saveSasaran($_POST);
+  }
+
+  $aspekId = isset($_GET['aspek_id']) ? $_GET['aspek_id'] : $aspeks[0]['id'];
+  $mutus = SiamMutuRepo::getMutus($aspekId);
 
   include('views/mutu-prodi-sasaran.php');
 }
 
 function siam_page_mutu_prodi_capaian() {
+  $aspeks = AspekRepo::all();
   $tahuns = SiamTahunRepo::all();
-  $mutus = SiamMutuRepo::all();
+
+  if (isset($_POST['capaian_submit'])) {
+    SiamMutuRepo::saveCapaian($_POST);
+  }
+
+  $aspekId = isset($_GET['aspek_id']) ? $_GET['aspek_id'] : $aspeks[0]['id'];
+  $mutus = SiamMutuRepo::getMutus($aspekId);
 
   include('views/mutu-prodi-capaian.php');
 }
