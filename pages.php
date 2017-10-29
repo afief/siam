@@ -97,3 +97,17 @@ function siam_page_daftar_mutu_edit() {
   $mutu = SiamMutuRepo::get($_GET['id']);
   include('views/setting-mutu-edit.php'); 
 }
+
+function siam_page_audit() {
+  $aspeks = AspekRepo::all();
+  $tahuns = SiamTahunRepo::all();
+
+  if (isset($_POST['audit_submit'])) {
+    SiamMutuRepo::saveAudit($_POST);
+  }
+
+  $aspekId = isset($_GET['aspek_id']) ? $_GET['aspek_id'] : $aspeks[0]['id'];
+  $mutus = SiamMutuRepo::getMutus($aspekId);
+
+  include('views/mutu-prodi-audit.php');
+}

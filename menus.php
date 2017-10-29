@@ -75,6 +75,32 @@ function siam_menu_setting() {
   remove_submenu_page('siam-options', 'siam-options');
 }
 
+function siam_menu_audit() {
+  add_menu_page(
+    'Auditor',
+    'Auditor',
+    'siam_role_audit',
+    'siam-audit',
+    null,
+    'dashicons-analytics',
+    33
+  );
+
+  add_submenu_page(
+    'siam-audit',
+    'Form Audit Mutu',
+    'Form Audit Mutu',
+    'siam_role_audit',
+    'mutu-prodi-audit',
+    'siam_page_audit',
+    '',
+    34
+  );
+
+  remove_submenu_page('siam-audit', 'siam-audit');
+}
+
 
 add_action('admin_menu', 'siam_menu_utama');
+add_action('admin_menu', 'siam_menu_audit');
 add_action('admin_menu', 'siam_menu_setting');

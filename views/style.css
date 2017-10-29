@@ -58,6 +58,10 @@
   width: 120px;
 }
 
+.siam-table tr .xlcol {
+  width: 160px;
+}
+
 .siam-table tr .year {
   text-align: center; 
 }

@@ -69,6 +69,11 @@ class SiamMutuRepo {
         $wpdb->prepare('SELECT `tahun`, `nilai` FROM `'.$wpdb->prefix.'si_capaian` WHERE mutu_id = %s ORDER BY `tahun` ASC', $mutu['id'])
       , ARRAY_A);
       $mutu['capaian'] = self::tahunAsKey($mutu['capaian']);
+
+      $mutu['audit'] = $wpdb->get_results(
+        $wpdb->prepare('SELECT `tahun`, `nilai` FROM `'.$wpdb->prefix.'si_audit` WHERE mutu_id = %s ORDER BY `tahun` ASC', $mutu['id'])
+      , ARRAY_A);
+      $mutu['audit'] = self::tahunAsKey($mutu['audit']);
     }
     return $mutus;
   }
@@ -132,6 +137,33 @@ class SiamMutuRepo {
           ));
         } else {
           $wpdb->insert($wpdb->prefix.'si_capaian', array(
+            'mutu_id' => $ar[1],
+            'tahun' => $ar[2],
+            'nilai' => $value
+          ));
+        }
+      }
+    }
+  }
+
+  public static function saveAudit($data) {
+    global $wpdb;
+
+    foreach ($data as $key => $value) {
+      if (substr($key, 0, 4) == 'mutu') {
+        $ar = explode('_', $key);
+        $exists = $wpdb->get_row(
+          $wpdb->prepare('select id from '.$wpdb->prefix.'si_audit where tahun = %s and mutu_id = %d', $ar[2], $ar[1])
+        );
+        if ($exists) {
+           $wpdb->update($wpdb->prefix.'si_audit', array(
+            'nilai' => $value
+          ), array(
+            'mutu_id' => $ar[1],
+            'tahun' => $ar[2]
+          ));
+        } else {
+          $wpdb->insert($wpdb->prefix.'si_audit', array(
             'mutu_id' => $ar[1],
             'tahun' => $ar[2],
             'nilai' => $value
