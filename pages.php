@@ -59,7 +59,27 @@ function siam_page_daftar_aspek_edit() {
 
 
 function siam_page_daftar_mutu() {
+  if (isset($_GET['action'])) {
+    if ($_GET['action'] == 'edit') {
+      return siam_page_daftar_mutu_edit();
+    }
+  }
+  if (isset($_POST['mutu_submit'])) {
+    SiamMutuRepo::insert($_POST['aspek_id'], $_POST['mutu_text'], $_POST['mutu_keterangan']);
+  } else if (isset($_GET['delete'])) {
+    SiamMutuRepo::delete($_GET['delete']);
+  }
   $aspek = AspekRepo::all();
   $mutus = SiamMutuRepo::all();
   include('views/setting-mutu.php');
+}
+
+function siam_page_daftar_mutu_edit() {
+  if (isset($_POST['mutu_edit_submit'])) {
+    SiamMutuRepo::update($_GET['id'], $_POST['aspek_id'], $_POST['mutu_text'], $_POST['mutu_keterangan']);
+    return siam_redirect(get_admin_urL() . 'admin.php?page=siam-options-mutu');
+  }
+  $aspek = AspekRepo::all();
+  $mutu = SiamMutuRepo::get($_GET['id']);
+  include('views/setting-mutu-edit.php'); 
 }

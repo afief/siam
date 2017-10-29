@@ -36,7 +36,9 @@ class AspekRepo {
   public static function delete($id) {
     global $wpdb;
     
-    return $wpdb->delete($wpdb->prefix.'si_aspek', array(
+    return $wpdb->update($wpdb->prefix.'si_aspek', array(
+      'deleted' => 1
+    ), array(
       'id' => $id
     ));
   }

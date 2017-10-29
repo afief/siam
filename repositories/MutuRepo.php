@@ -13,6 +13,46 @@ class SiamMutuRepo {
     return $aspeks;
   }
 
+  public static function get($id) {
+    global $wpdb;
+
+    return $wpdb->get_row(
+      $wpdb->prepare('select `id`, `aspek_id`, `text`, `keterangan` from '.$wpdb->prefix.'si_mutu where deleted = 0 and id = %d', $id)
+    ); 
+  }
+
+  public static function update($id, $aspekId, $text, $keterangan) {
+    global $wpdb;
+
+    return $wpdb->update($wpdb->prefix.'si_mutu', array(
+      'aspek_id' => $aspekId,
+      'text' => $text,
+      'keterangan' => $keterangan
+    ), array(
+      'id' => $id
+    ), array('%s'), array('%d'));
+  }
+
+  public static function insert($aspekId, $text, $keterangan) {
+    global $wpdb;
+
+    return $wpdb->insert($wpdb->prefix.'si_mutu', array(
+      'aspek_id' => $aspekId,
+      'text' => $text,
+      'keterangan' => $keterangan
+    ));
+  }
+
+  public static function delete($id) {
+    global $wpdb;
+    
+    return $wpdb->update($wpdb->prefix.'si_mutu', array(
+      'deleted' => 1
+    ), array(
+      'id' => $id
+    ));
+  }
+
   public static function getMutus($aspekId) {
     global $wpdb;
 
@@ -35,7 +75,7 @@ class SiamMutuRepo {
 
   public static function tahunAsKey($values) {
     $tahuns = SiamTahunRepo::all();
-    $result = [];
+    $result = array();
     foreach ($values as $value) {
       $result[$value['tahun']] = $value['nilai'];
     }

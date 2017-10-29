@@ -52,5 +52,9 @@
   margin-bottom: 0px; 
 }
 .siam-form table {
-  margin-top: 0px;
+  margin-top: 10px;
+}
+.siam-form table tr td, .siam-form table tr th {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

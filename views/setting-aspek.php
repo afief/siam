@@ -9,7 +9,7 @@
       <tr>
         <th class="xscol">&nbsp;</th>
         <th>Nama</th>
-        <th class="lcol">#</th>
+        <th class="lcol year">#</th>
       </tr>
     </thead>
     <tbody>
@@ -25,7 +25,7 @@
           <a class="button" href="?page=siam-options-aspek&action=edit&id=<?= $as['id'] ?>">
             Edit
           </a>
-          <a class="button" href="?page=siam-options-aspek&delete=<?= $as['id'] ?>">
+          <a class="button" href="?page=siam-options-aspek&delete=<?= $as['id'] ?>" onclick="return confirm('Menghapus aspek akan menghapus semua mutu dibawah <?= $as['text'] ?>. Yakin?')">
             Delete
           </a>
         </td>
@@ -41,9 +41,9 @@
     <table class="form-table">
       <tbody>
         <tr class="form-field form-required">
-          <th scope="row"><label for="aspek_text">Nama Aspek<span class="description">(required)</span></label></th>
+          <th scope="row"><label for="aspek_text">Nama Aspek</label></th>
           <td>
-            <input name="aspek_text" type="text" id="aspek_text" value="" aria-required="true" autocorrect="off" maxlength="20">
+            <input name="aspek_text" type="text" id="aspek_text" value="" aria-required="true" autocorrect="off" maxlength="20" required="required">
           </td>
         </tr>
       </tbody>
