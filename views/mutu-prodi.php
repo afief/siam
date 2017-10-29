@@ -1,7 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?= SIAM_URL . 'views/style.css' ?>">
 
-<div class="wrap siam-wrap">
-
+<div class="wrap siam-wrap"  id="printTable">
   <h2>Sasaran Mutu Program Studi</h2>
 
   <table class="siam-table widefat fixed striped">
@@ -37,3 +36,27 @@
   </table>
 
 </div>
+
+<hr>
+
+<div class="wrap siam-wrap">
+  <button class="button button-primary" onclick="doPrint()">
+    <span class="dashicons dashicons-slides"></span> Print
+  </button>
+</div>
+
+<script type="text/javascript">
+  function doPrint() {
+    var divToPrint=document.getElementById("printTable");
+    newWin= window.open("");
+    var styles = jQuery('link[rel=stylesheet]');
+    styles.each(function(index, val) {
+      newWin.document.write(val.outerHTML);
+    });
+    newWin.document.write(divToPrint.outerHTML);
+    newWin.setTimeout(function() {
+      newWin.print();
+      newWin.close();
+    }, 1000);
+  }
+</script>
