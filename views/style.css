@@ -69,6 +69,7 @@
 .siam-table tr .small {
   font-size: 0.8em;
   font-weight: normal;
+  padding: 5px 0px;
 }
 
 .siam-form {

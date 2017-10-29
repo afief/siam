@@ -98,6 +98,16 @@ function siam_page_daftar_mutu_edit() {
   include('views/setting-mutu-edit.php'); 
 }
 
+function siam_page_daftar_tahun() {
+  if (isset($_POST['tahun_submit'])) {
+    SiamTahunRepo::insert($_POST['tahun_text']);
+  } else if (isset($_GET['delete'])) {
+    SiamTahunRepo::delete($_GET['delete']);
+  }
+  $tahuns = SiamTahunRepo::select();
+  include('views/setting-tahun.php');
+}
+
 function siam_page_audit() {
   $aspeks = AspekRepo::all();
   $tahuns = SiamTahunRepo::all();

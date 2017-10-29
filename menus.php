@@ -72,6 +72,18 @@ function siam_menu_setting() {
     41
   );
 
+  /* Daftar Aspek */
+  add_submenu_page(
+    'siam-options',
+    'Daftar Tahun',
+    'Daftar Tahun',
+    'siam_role_mutu',
+    'siam-options-tahun',
+    'siam_page_daftar_tahun',
+    '',
+    41
+  );
+
   remove_submenu_page('siam-options', 'siam-options');
 }
 
