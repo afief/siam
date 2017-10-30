@@ -100,11 +100,22 @@ function siam_menu_audit() {
 
   add_submenu_page(
     'siam-audit',
-    'Form Audit Mutu',
-    'Form Audit Mutu',
+    'Audit Mutu',
+    'Audit Mutu',
     'siam_role_audit',
     'mutu-prodi-audit',
     'siam_page_audit',
+    '',
+    34
+  );
+
+  add_submenu_page(
+    'siam-audit',
+    'Form Audit Mutu',
+    'Form Audit Mutu',
+    'siam_role_audit',
+    'mutu-prodi-audit-form',
+    'siam_page_audit_form',
     '',
     34
   );

@@ -109,6 +109,13 @@ function siam_page_daftar_tahun() {
 }
 
 function siam_page_audit() {
+  $tahuns = SiamTahunRepo::all();
+  $mutus = SiamMutuRepo::all();
+
+  include('views/mutu-prodi-audit.php');
+}
+
+function siam_page_audit_form() {
   $aspeks = AspekRepo::all();
   $tahuns = SiamTahunRepo::all();
 
@@ -119,5 +126,5 @@ function siam_page_audit() {
   $aspekId = isset($_GET['aspek_id']) ? $_GET['aspek_id'] : $aspeks[0]['id'];
   $mutus = SiamMutuRepo::getMutus($aspekId);
 
-  include('views/mutu-prodi-audit.php');
+  include('views/mutu-prodi-audit-form.php');
 }
