@@ -24,5 +24,6 @@ require_once('repositories/AspekRepo.php');
 require_once('repositories/TahunRepo.php');
 require_once('repositories/MutuRepo.php');
 
+require_once('events/login.php');
 require_once('events/activation.php');
 require_once('menus.php');
