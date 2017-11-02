@@ -2,13 +2,13 @@
 
 function siam_activation_hook() {
   add_role('operator', 'Operator', array(
-    'read' => true,
+    
     'level_0' => true,
     'siam_role_mutu' => true
   ));
 
   add_role('auditor', 'Auditor', array(
-    'read' => true,
+    
     'level_0' => true,
     'siam_role_audit' => true
   ));

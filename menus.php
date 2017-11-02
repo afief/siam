@@ -127,3 +127,43 @@ function siam_menu_audit() {
 add_action('admin_menu', 'siam_menu_utama');
 add_action('admin_menu', 'siam_menu_audit');
 add_action('admin_menu', 'siam_menu_setting');
+
+
+
+/* TOOLBAR */
+function siam_admin_bar( $wp_admin_bar ) {
+  global $wp_admin_bar;
+
+  $user = wp_get_current_user();
+  if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+    if ( in_array( 'auditor', $user->roles ) ) {
+      $args = array(
+        'id'    => 'siam_bar_audit',
+        'title' => 'Audit Mutu',
+        'href'  => get_admin_url() . 'admin.php?page=mutu-prodi-audit'
+      );
+      $wp_admin_bar->add_node( $args );
+    } else if ( in_array( 'operator', $user->roles ) ) {
+      $args = array(
+        'id'    => 'siam_bar_mutu',
+        'title' => 'Sasaran Mutu Prodi',
+        'href'  => get_admin_url() . 'admin.php?page=mutu-prodi'
+      );
+      $wp_admin_bar->add_node( $args );
+    } else if (count($user->roles) > 0) {
+      $args = array(
+        'id'    => 'siam_bar_mutu',
+        'title' => 'Sasaran Mutu Prodi',
+        'href'  => get_admin_url() . 'admin.php?page=mutu-prodi'
+      );
+      $wp_admin_bar->add_node( $args );
+      $args = array(
+        'id'    => 'siam_bar_audit',
+        'title' => 'Audit Mutu',
+        'href'  => get_admin_url() . 'admin.php?page=mutu-prodi-audit'
+      );
+      $wp_admin_bar->add_node( $args );
+    }
+  }
+}
+add_action( 'admin_bar_menu', 'siam_admin_bar', 999 );
