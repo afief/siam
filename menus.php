@@ -167,3 +167,17 @@ function siam_admin_bar( $wp_admin_bar ) {
   }
 }
 add_action( 'admin_bar_menu', 'siam_admin_bar', 999 );
+
+function siam_hide_update_info() {
+  $user = wp_get_current_user();
+  if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+    if ( in_array( 'auditor', $user->roles ) || in_array( 'operator', $user->roles ) ) {
+      ?>
+      <style type="text/css">
+        .update-nag { display: none; }
+      </style>
+      <?php
+    }
+  }
+}
+add_action( 'admin_head', 'siam_hide_update_info', 1 );

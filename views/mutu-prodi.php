@@ -1,5 +1,16 @@
 <link rel="stylesheet" type="text/css" href="<?= SIAM_URL . 'views/style.css' ?>">
 
+<div class="wrap siam-wrap">
+  <a class="button button-primary" href="<?= get_admin_url() . '/admin.php?download=mutu-prodi'; ?>">
+    <span class="dashicons dashicons-download"></span> Download Excel
+  </a>
+  <button class="button button-primary" onclick="doPrint()">
+    <span class="dashicons dashicons-slides"></span> Print
+  </button>
+</div>
+
+<hr>
+
 <div class="wrap siam-wrap"  id="printTable">
   <h2>Sasaran Mutu Program Studi</h2>
 
@@ -40,6 +51,9 @@
 <hr>
 
 <div class="wrap siam-wrap">
+  <a class="button button-primary" href="<?= get_admin_url() . '/admin.php?download=mutu-prodi'; ?>">
+    <span class="dashicons dashicons-download"></span> Download Excel
+  </a>
   <button class="button button-primary" onclick="doPrint()">
     <span class="dashicons dashicons-slides"></span> Print
   </button>

@@ -5,7 +5,11 @@ function siam_page_mutu_prodi() {
   $tahuns = SiamTahunRepo::all();
   $mutus = SiamMutuRepo::all();
 
-  include('views/mutu-prodi.php');
+  if (isset($_GET['download'])) {
+    include('downloads/mutu-prodi.php');
+  } else {
+    include('views/mutu-prodi.php');
+  }
 }
 
 function siam_page_mutu_prodi_sasaran() {

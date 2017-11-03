@@ -14,6 +14,10 @@ if (!defined('SIAM_FILE')) {
   define('SIAM_FILE', __FILE__);
 }
 
+if (!defined('SIAM_DIR')) {
+  define('SIAM_DIR', __DIR__);
+}
+
 if (!defined('SIAM_URL')) {
   define('SIAM_URL', plugin_dir_url(__FILE__));
 }
@@ -23,6 +27,8 @@ require_once('functions.php');
 require_once('repositories/AspekRepo.php');
 require_once('repositories/TahunRepo.php');
 require_once('repositories/MutuRepo.php');
+
+require_once('download.php');
 
 require_once('events/login.php');
 require_once('events/activation.php');
